@@ -1,32 +1,33 @@
 /**
  * Copyright (c) 2013 MNCC
- *
+ * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
  * associated documentation files (the "Software"), to deal in the Software without restriction,
  * including without limitation the rights to use, copy, modify, merge, publish, distribute,
  * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- *
+ * 
  * The above copyright notice and this permission notice shall be included in all copies or
  * substantial portions of the Software.
- *
+ * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
  * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
  * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
+ * 
  * @author http://www.mncc.fr
  */
 package fr.mncc.gwttoolbox.appengine.shared;
 
-import com.google.common.base.Objects;
-import com.google.gwt.user.client.rpc.IsSerializable;
-import fr.mncc.gwttoolbox.primitives.shared.ObjectUtils;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.google.common.base.Objects;
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+import fr.mncc.gwttoolbox.primitives.shared.ObjectUtils;
 
 public class SQuery2 implements IsSerializable, Serializable {
 
@@ -68,11 +69,8 @@ public class SQuery2 implements IsSerializable, Serializable {
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
-          .add("propertyName_", propertyName_)
-          .add("isAscending_", isAscending_)
-          .omitNullValues()
-          .toString();
+      return Objects.toStringHelper(this).add("propertyName_", propertyName_).add("isAscending_",
+              isAscending_).omitNullValues().toString();
     }
   }
 
@@ -81,8 +79,9 @@ public class SQuery2 implements IsSerializable, Serializable {
     private int operator_;
     private String propertyName_ = "";
 
-    private String propertyValue_ = ""; // EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, GREATER_THAN, GREATER_THAN_OR_EQUAL, NOT_EQUAL
-    private ArrayList<Long> propertyValues_ = new ArrayList<Long>();  // IN
+    private String propertyValue_ = ""; // EQUAL, LESS_THAN, LESS_THAN_OR_EQUAL, GREATER_THAN,
+                                        // GREATER_THAN_OR_EQUAL, NOT_EQUAL
+    private ArrayList<Long> propertyValues_ = new ArrayList<Long>(); // IN
 
     protected SFilter2() {
 
@@ -120,13 +119,9 @@ public class SQuery2 implements IsSerializable, Serializable {
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
-          .add("operator_", operator_)
-          .add("propertyName_", propertyName_)
-          .add("propertyValue_", propertyValue_)
-          .add("propertyValues_", propertyValues_)
-          .omitNullValues()
-          .toString();
+      return Objects.toStringHelper(this).add("operator_", operator_).add("propertyName_",
+              propertyName_).add("propertyValue_", propertyValue_).add("propertyValues_",
+              propertyValues_).omitNullValues().toString();
     }
   }
 
@@ -145,11 +140,11 @@ public class SQuery2 implements IsSerializable, Serializable {
       clauseLeft_ = clauseLeft;
       clauseRight_ = clauseRight;
     }
-    
+
     public boolean isAnd() {
       return isAnd_;
     }
- 
+
     public SClause2 getLeftClause() {
       return clauseLeft_;
     }
@@ -161,19 +156,15 @@ public class SQuery2 implements IsSerializable, Serializable {
     public boolean isNode() {
       return !isLeaf();
     }
-    
+
     public boolean isLeaf() {
       return clauseLeft_ == null && clauseRight_ == null;
     }
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
-          .add("isAnd_", isAnd_)
-          .add("clauseLeft_", clauseLeft_)
-          .add("clauseRight_", clauseRight_)
-          .omitNullValues()
-          .toString();
+      return Objects.toStringHelper(this).add("isAnd_", isAnd_).add("clauseLeft_", clauseLeft_)
+          .add("clauseRight_", clauseRight_).omitNullValues().toString();
     }
   }
 
@@ -194,18 +185,15 @@ public class SQuery2 implements IsSerializable, Serializable {
     public String getPropertyName() {
       return propertyName_;
     }
-    
+
     public Class<?> getClazz() {
       return clazz_;
     }
 
     @Override
     public String toString() {
-      return Objects.toStringHelper(this)
-          .add("propertyName_", propertyName_)
-          .add("clazz_", clazz_)
-          .omitNullValues()
-          .toString();
+      return Objects.toStringHelper(this).add("propertyName_", propertyName_).add("clazz_", clazz_)
+          .omitNullValues().toString();
     }
   }
 
@@ -289,7 +277,7 @@ public class SQuery2 implements IsSerializable, Serializable {
   public SQuery2(String kind) {
     this(kind, "", 0);
   }
-  
+
   public SQuery2(String kind, String ancestorKind, long ancestorId) {
     kind_ = kind;
     ancestorKind_ = ancestorKind;
@@ -311,15 +299,15 @@ public class SQuery2 implements IsSerializable, Serializable {
   public ArrayList<SProjection2> getProjections() {
     return projections_;
   }
-  
+
   public ArrayList<SSort2> getSorters() {
     return sorters_;
   }
-  
+
   public SClause2 getClause() {
     return clause_;
   }
-  
+
   public boolean isKeysOnly() {
     return isKeysOnly_;
   }
@@ -333,7 +321,7 @@ public class SQuery2 implements IsSerializable, Serializable {
     isKeysOnly_ = false;
     return this;
   }
-  
+
   public SQuery2 addStringProjection(String propertyName) {
     if (isValidProjection(propertyName))
       projections_.add(new SProjection2(propertyName, String.class));
@@ -425,10 +413,12 @@ public class SQuery2 implements IsSerializable, Serializable {
 
   private boolean isValidProjection(String propertyName, SClause2 clause) {
     if (!clause.isLeaf())
-      return isValidProjection(propertyName, clause.getLeftClause()) && isValidProjection(propertyName, clause.getRightClause());
-    
+      return isValidProjection(propertyName, clause.getLeftClause())
+          && isValidProjection(propertyName, clause.getRightClause());
+
     SFilter2 sfilter = (SFilter2) clause;
-    if (sfilter.getOperator() != SFilterOperator2.IN && sfilter.getOperator() != SFilterOperator2.EQUAL)
+    if (sfilter.getOperator() != SFilterOperator2.IN
+        && sfilter.getOperator() != SFilterOperator2.EQUAL)
       return true;
     return !sfilter.getPropertyName().equals(propertyName);
   }
@@ -436,7 +426,7 @@ public class SQuery2 implements IsSerializable, Serializable {
   private boolean isValidClause(SClause2 clause) {
     if (clause == null)
       return false;
-    
+
     // Properties referenced in an equality (EQUAL) or membership (IN) filter cannot be projected
     if (projections_ != null) {
       for (SProjection2 projection : projections_) {
@@ -446,23 +436,18 @@ public class SQuery2 implements IsSerializable, Serializable {
     }
 
     // TODO :
-    //    - Inequality filters are limited to at most one property
-    //    - Properties used in inequality filters must be sorted first
+    // - Inequality filters are limited to at most one property
+    // - Properties used in inequality filters must be sorted first
 
-    return clause.isLeaf() ? true : isValidClause(clause.getLeftClause()) && isValidClause(clause.getRightClause());
+    return clause.isLeaf() ? true : isValidClause(clause.getLeftClause())
+        && isValidClause(clause.getRightClause());
   }
 
   @Override
   public String toString() {
-    return Objects.toStringHelper(this)
-        .add("kind_", kind_)
-        .add("ancestorKind_", ancestorKind_)
-        .add("ancestorId_", ancestorId_)
-        .add("projections_", projections_)
-        .add("sorters_", sorters_)
-        .add("clause_", clause_)
-        .add("isKeysOnly_", isKeysOnly_)
-        .omitNullValues()
-        .toString();
+    return Objects.toStringHelper(this).add("kind_", kind_).add("ancestorKind_", ancestorKind_)
+        .add("ancestorId_", ancestorId_).add("projections_", projections_)
+        .add("sorters_", sorters_).add("clause_", clause_).add("isKeysOnly_", isKeysOnly_)
+        .omitNullValues().toString();
   }
 }
