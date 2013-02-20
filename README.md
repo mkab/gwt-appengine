@@ -24,8 +24,7 @@ Server :
 * A wrapper for the DataStore API (async + sync) :
     * [fr.mncc.gwttoolbox.appengine.server.DataStore2](https://github.com/csavelief/gwt-appengine/blob/master/src/fr/mncc/gwttoolbox/appengine/server/DataStore2.java)
 * A wrapper for the Memcache API (async + sync) :
-    * [fr.mncc.gwttoolbox.appengine.server.LowLevelMemcacheAsync](https://github.com/csavelief/gwt-appengine/blob/master/src/fr/mncc/gwttoolbox/appengine/server/LowLevelMemcacheAsync.java)
-    * [fr.mncc.gwttoolbox.appengine.server.LowLevelMemcache](https://github.com/csavelief/gwt-appengine/blob/master/src/fr/mncc/gwttoolbox/appengine/server/LowLevelMemcache.java)
+    * [fr.mncc.gwttoolbox.appengine.server.Memcache2](https://github.com/csavelief/gwt-appengine/blob/master/src/fr/mncc/gwttoolbox/appengine/server/Memcache2.java)
 
 How to get started ?
 ====================
